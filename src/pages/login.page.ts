@@ -16,14 +16,12 @@ import { Page, Locator } from '@playwright/test';
 export class Login extends Base{
 
  //readonlt properties Can be assigned only once (usually in constructor)
- readonly page: Page;
  readonly username:Locator;
  readonly password:Locator;
  readonly loginButton: Locator;
 
- constructor(page: Page, url:string){
-     super(page, url)
-        this.page = page;   
+ constructor(page: Page){
+        super(page)
         this.username = page.getByRole('textbox', {name:'Username'});
         this.password = page.getByRole('textbox', {name:'Password'});
         // this.loginButton = page.getByRole('textbox', {name: 'Login'});

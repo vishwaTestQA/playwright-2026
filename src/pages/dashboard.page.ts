@@ -6,7 +6,7 @@ export class Dashboard extends Base{
     readonly prodPrice;
 
     constructor(page: Page, url:string = ""){
-        super(page, url)
+        super(page)
         this.prodText = this.page.locator(".inventory_item_name")
         this.prodPrice = this.page.locator(".inventory_item_price")
     }

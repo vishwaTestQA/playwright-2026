@@ -4,11 +4,9 @@ import { Base } from "./base.page";
 export class Iframe extends Base{
    readonly frame;
    readonly bodyEle;
-   readonly page;
 
-   constructor(page: Page, url: string){
-     super(page, url)
-     this.page = page;
+   constructor(page: Page){
+     super(page)
      this.frame = this.page.frameLocator("#mce_0_ifr");
      this.bodyEle = this.frame.locator(".example");
       
