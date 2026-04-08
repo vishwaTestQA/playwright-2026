@@ -5,7 +5,7 @@ test.describe('window handling test',() => {
 
   test.beforeEach( async() => {
       const browser = await chromium.launch({
-           headless:false
+           headless:true
       })
       const context = await browser.newContext();  
       const page = await context.newPage();  //from context we get new page

@@ -1,0 +1,73 @@
+    let imageState = 0;
+ 
+    const ul = document.createElement('ul')
+    ul.classList.add('dummyul')
+      for(let i=0; i<5; i++){
+        const li = document.createElement('li')
+        li.classList.add('carousal')
+        li.textContent = `list ${i}`
+        li.style.width = "100px";
+        li.style.height = "20px";
+        li.style.display = "none";
+        li.style.border = "solid";
+        li.setAttribute("aria-hidden", "true")
+        ul.appendChild(li);
+      }
+    const rootEle = document.querySelector('#root')
+    rootEle.appendChild(ul);
+
+      //make first element visible
+    let liEle = document.querySelector(`li:nth-child(${imageState+1})`)
+     console.log(liEle)
+     liEle.style.display = "block"
+     liEle.style.color = "red"
+     liEle.setAttribute("aria-hidden", "false")
+
+      const left = document.createElement('button')
+      left.classList.add("left-btn")
+      left.textContent = "left"
+     
+
+      const right = document.createElement('button')
+      right.classList.add("right-btn")
+      right.textContent = "right"
+
+      rootEle.appendChild(left)
+      rootEle.appendChild(right)
+
+  const handleImageRight = () => {
+      if(imageState < 4 || imageState === 0){
+        imageState += 1
+      }else if(imageState === 4){
+        imageState = 0;
+      }
+      console.log("executing"+ imageState)
+      liEle.style.display = "none" 
+      liEle.setAttribute("aria-hidden", "true")
+      liEle = document.querySelector(`li:nth-child(${imageState+1})`)
+      liEle.setAttribute("aria-hidden", "false")
+      liEle.style.display = "block"
+      liEle.style.color = "red"
+  }
+
+    const handleImageLeft = () => {
+      if(imageState <= 4 && imageState > 0){
+        imageState -= 1
+      }else if(imageState === 0){
+        imageState = 4;
+      }
+      console.log("executing"+ imageState)
+      liEle.style.display = "none" 
+      liEle = document.querySelector(`li:nth-child(${imageState+1})`)
+      liEle.style.display = "block"
+      liEle.style.color = "red"
+  }
+
+    right.addEventListener('click', handleImageRight)
+    left.addEventListener('click', handleImageLeft)
+
+
+    
+
+
+
